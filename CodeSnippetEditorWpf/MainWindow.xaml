@@ -1,0 +1,233 @@
+﻿<Window x:Class="CodeSnippetEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:r="clr-namespace:System.Windows"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="{Binding Path=[CSE.ApplicationName]}" r:ResourceKeyProvider.TextKey="CSE.ApplicationName" MinWidth="800" MinHeight="600" Width="1000" Height="850" WindowStartupLocation="CenterScreen">
+    <Border x:Name="ctrlWindowBorder"  BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"  MinWidth="250" MaxWidth="350" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--<ToolBar Style="{DynamicResource ToolBarStyle}">-->
+            <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Padding="1,3" Background="#FFEEF5FD">
+                <MenuItem Header="文件">
+                    <MenuItem Header=""/>
+                    <Separator/>
+                    <MenuItem Header="{Binding Path=[CSE.Form.MainWindow.MainMenu.Exit]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.MainMenu.Exit" ToolTip="{Binding Path=[CSE.Form.MainWindow.MainMenu.Exit]}" r:ResourceKeyProvider.ToolTipKey="CSE.Form.MainWindow.MainMenu.Exit"/>
+                </MenuItem>
+                <MenuItem Header="{Binding Path=[CSE.Form.MainWindow.MainMenu.Tools]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.MainMenu.Tools" ToolTip="{Binding Path=[CSE.Form.MainWindow.MainMenu.Tools]}" r:ResourceKeyProvider.ToolTipKey="CSE.Form.MainWindow.MainMenu.Tools">
+                    <MenuItem x:Name="ctrlConfigMenuItem" Header="{Binding Path=[CSE.Form.MainWindow.MainMenu.Tools.Config]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.MainMenu.Tools.Config" ToolTip="{Binding Path=[CSE.Form.MainWindow.MainMenu.Tools.Config]}" r:ResourceKeyProvider.ToolTipKey="CSE.Form.MainWindow.MainMenu.Tools.Config"/>
+                </MenuItem>
+            </Menu>
+            <!--</ToolBar>-->
+            <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Background="White"/>
+            <Border Grid.Row="1" Grid.Column="0">
+                <DockPanel>
+                    <ComboBox Height="25" DockPanel.Dock="Top"/>
+                    <Grid DockPanel.Dock="Top" Height="25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" VerticalContentAlignment="Center" />
+                        <Button x:Name="SplitButton" Grid.Column="1" Width="30" BorderThickness="0,0,1,0">
+                            <Button.ContextMenu>
+                                <ContextMenu x:Name="SplitButtonMenu">
+                                    <MenuItem Header="MenuItem-0"/>
+                                    <MenuItem Header="MenuItem-0-0"/>
+                                    <MenuItem Header="MenuItem-0-1"/>
+                                    <MenuItem Header="MenuItem-0-2"/>
+                                    <MenuItem Header="MenuItem-1"/>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                    </Grid>
+                    <TreeView Margin="0" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="2" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ToolBar Grid.Row="0" Style="{DynamicResource ToolBarStyle}">
+                        <Button Style="{StaticResource ToolBarIconButtonStyle}" ToolTip="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.New.ToolTip]}" r:ResourceKeyProvider.ToolTipKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.New.ToolTip">
+                            <Image Source="Resources\new.png" Stretch="Fill" />
+                        </Button>
+                        <Button Style="{StaticResource ToolBarIconButtonStyle}" ToolTip="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Save.ToolTip]}" r:ResourceKeyProvider.ToolTipKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Save.ToolTip">
+                            <Image Source="Resources\save.png" Stretch="Fill" />
+                        </Button>
+                    </ToolBar>
+                    <ScrollViewer x:Name="ctrlCodeSnippetEditorView"  Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Padding="10">
+                        <StackPanel>
+                            <Expander x:Name="ctrlPropertiesExpander" IsExpanded="True" DockPanel.Dock="Top" Style="{DynamicResource ExpanderStyle}">
+                                <Expander.Header>
+                                    <Label FontWeight="Bold" Foreground="White" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.Category.Item1]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.Category.Item1"/>
+                                </Expander.Header>
+                                <Expander.Content>
+                                    <Border Background="White">
+                                        <Grid VerticalAlignment="Top" Margin="10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Margin="0,3,15,3" Height="25" VerticalAlignment="Center" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Title]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Title"/>
+                                            <TextBox x:Name="ctrlTitleTextBox" Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="25" Margin="0,3" Text="{Binding Path=Title,Mode=TwoWay}"/>
+                                            <Label Grid.Row="1" Grid.Column="0" Margin="0,3,15,3" Height="25" VerticalAlignment="Center" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Description]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Description"/>
+                                            <TextBox x:Name="ctrlDescriptionTextBox" Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="25" Margin="0,3" Text="{Binding Path=Description,Mode=TwoWay}"/>
+                                            <Label Grid.Row="2" Grid.Column="0" Margin="0,3,15,3" Height="25" VerticalAlignment="Center" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Author]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Author"/>
+                                            <TextBox x:Name="ctrlAuthorTextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="200" Height="25" Margin="0,3" Text="{Binding Path=Author,Mode=TwoWay}"/>
+                                            <Label Grid.Row="2" Grid.Column="2" Margin="30,3,15,3" Height="25" VerticalAlignment="Center" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Shortout]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Shortout"/>
+                                            <TextBox x:Name="ctrlShortoutTextBox" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="200" Height="25" Margin="0,3" Text="{Binding Path=Shortout,Mode=TwoWay}"/>
+                                            <Label Grid.Row="3" Grid.Column="0" Margin="0,3,15,3" Height="25" VerticalAlignment="Center" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Language]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Language"/>
+                                            <ComboBox x:Name="ctrlCodeLanguageComboBox" Grid.Row="3"  Grid.Column="1" HorizontalAlignment="Left" Width="200" Height="25" Margin="0,3" IsEditable="True" SelectedItem="{Binding Path=Language,Mode=TwoWay}">
+                                                <System:String>HTML</System:String>
+                                                <System:String>JScript</System:String>
+                                                <System:String>Visual Basic</System:String>
+                                                <System:String>Visual C#</System:String>
+                                                <System:String>Visual J#</System:String>
+                                                <System:String>XML</System:String>
+                                            </ComboBox>
+                                            <Label Grid.Row="3"  Grid.Column="2" Margin="30,3,15,3" Height="25" VerticalAlignment="Center" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Kind]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.Kind"/>
+                                            <ComboBox x:Name="ctrlCodeKindComboBox" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Width="200" Height="25" Margin="0,3" SelectedItem="{Binding Path=Kind,Mode=TwoWay}">
+                                                <System:String>Class declaration</System:String> 
+                                                <System:String>Member declaration</System:String>
+                                                <System:String>Member body</System:String>
+                                                <System:String>Unspecified</System:String>
+                                            </ComboBox>
+                                            <Label Grid.Row="4" Grid.Column="0" Margin="0,3,15,3" Height="25" VerticalAlignment="Center" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.HelpUrl]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.ToolBar.Properties.HelpUrl"/>
+                                            <TextBox x:Name="ctrlHelpUrlTextBox" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="25" Margin="0,3" Text="{Binding Path=HelpUrl,Mode=TwoWay}"/>
+                                        </Grid>
+                                    </Border>
+                                </Expander.Content>
+                            </Expander>
+                            <Expander x:Name="ctrlCodeEditorExpander" IsExpanded="True" DockPanel.Dock="Top" Style="{DynamicResource ExpanderStyle}">
+                                <Expander.Header>
+                                    <Label  FontWeight="Bold" Foreground="White" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.Category.Item2]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.Category.Item2"/>
+                                </Expander.Header>
+                                <Expander.Content>
+                                    <Grid VerticalAlignment="Top">
+                                        <DockPanel>
+                                            <RichTextBox x:Name="ctrlCodeRichTextBox" DockPanel.Dock="Top" MinHeight="200" BorderThickness="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                                            <ToolBar DockPanel.Dock="Top" Style="{DynamicResource ToolBarStyle}">
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}" ToolTip="{Binding Path=[CSE.ApplicationName]}" r:ResourceKeyProvider.ToolTipKey="CSE.ApplicationName">
+                                                    <Image Source="Resources\plus.png" Stretch="Fill" />
+                                                </Button>
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\edit.png" Stretch="Fill" />
+                                                </Button>
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\delete.png" Stretch="Fill" />
+                                                </Button>
+                                            </ToolBar>
+                                            <DataGrid x:Name="ctrlReplacementDataGrid" DockPanel.Dock="Top" ItemsSource="{Binding ReplacementViewModel}" Style="{DynamicResource DataGridStyle}"/>
+                                        </DockPanel>
+                                    </Grid>
+                                </Expander.Content>
+                            </Expander>
+                            <Expander x:Name="ctrlReferenceExpander" IsExpanded="True" DockPanel.Dock="Top" Style="{DynamicResource ExpanderStyle}">
+                                <Expander.Header>
+                                    <Label  FontWeight="Bold" Foreground="White" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.Category.Item3]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.Category.Item3"/>
+                                </Expander.Header>
+                                <Expander.Content>
+                                    <Grid VerticalAlignment="Top">
+                                        <DockPanel>
+                                            <ToolBar DockPanel.Dock="Top" Style="{DynamicResource ToolBarStyle}">
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\plus.png" Stretch="Fill" />
+                                                </Button>
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\edit.png" Stretch="Fill" />
+                                                </Button>
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\delete.png" Stretch="Fill" />
+                                                </Button>
+                                            </ToolBar>
+                                            <DataGrid x:Name="ctrlReferenceDataGrid" DockPanel.Dock="Top" ItemsSource="{Binding ReferenceViewModel}" Style="{DynamicResource DataGridStyle}">
+                                                <!--<DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Column" Width="100*"/>
+                                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Column" Width="100*"/>
+                                        </DataGrid.Columns>-->
+                                            </DataGrid>
+                                        </DockPanel>
+                                    </Grid>
+                                </Expander.Content>
+                            </Expander>
+                            <Expander x:Name="ctrlImportExpander" IsExpanded="True" DockPanel.Dock="Top" Style="{DynamicResource ExpanderStyle}">
+                                <Expander.Header>
+                                    <Label  FontWeight="Bold" Foreground="White" Content="{Binding Path=[CSE.Form.MainWindow.SnippetEditor.Category.Item4]}" r:ResourceKeyProvider.TextKey="CSE.Form.MainWindow.SnippetEditor.Category.Item4"/>
+                                </Expander.Header>
+                                <Expander.Content>
+                                    <Grid VerticalAlignment="Top">
+                                        <DockPanel>
+                                            <ToolBar DockPanel.Dock="Top" Style="{DynamicResource ToolBarStyle}">
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\plus.png" Stretch="Fill" />
+                                                </Button>
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\edit.png" Stretch="Fill" />
+                                                </Button>
+                                                <Button Style="{StaticResource ToolBarIconButtonStyle}">
+                                                    <Image Source="Resources\delete.png" Stretch="Fill" />
+                                                </Button>
+                                            </ToolBar>
+                                            <DataGrid x:Name="ctrlImportDataGrid" DockPanel.Dock="Top" ItemsSource="{Binding ImportViewModel}" Style="{DynamicResource DataGridStyle}">
+                                                <!--<DataGrid.Columns>
+                                                <DataGridTextColumn Binding="{Binding Path=Namespase}" ClipboardContentBinding="{x:Null}" Header="Column" Width="100*" />
+                                                <DataGridTextColumn Binding="{Binding Path=Namespase}" ClipboardContentBinding="{x:Null}" Header="Column" Width="100*" />
+                                            </DataGrid.Columns>-->
+                                            </DataGrid>
+                                        </DockPanel>
+                                    </Grid>
+                                </Expander.Content>
+                            </Expander>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+            <StatusBar  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+                <!--<StatusBar.ItemsPanel>
+
+                    <ItemsPanelTemplate>
+
+                        <DockPanel />
+
+                    </ItemsPanelTemplate>
+
+                </StatusBar.ItemsPanel>-->
+                <StatusBarItem DockPanel.Dock="Right" Width="100" HorizontalContentAlignment="Center">
+                    <TextBlock Text="1"/>
+                </StatusBarItem>
+                <Separator DockPanel.Dock="Right" Background="#FFCCCCCC"/>
+                <StatusBarItem DockPanel.Dock="Right" Width="100" HorizontalContentAlignment="Center">
+                    <TextBlock Text="2"/>
+                </StatusBarItem>
+                <Separator DockPanel.Dock="Right" Background="#FFCCCCCC"/>
+                <StatusBarItem DockPanel.Dock="Right">
+                    <TextBlock Text="3"/>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </Border>
+</Window>

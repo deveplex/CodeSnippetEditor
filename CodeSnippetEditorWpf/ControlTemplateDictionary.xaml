@@ -1,0 +1,69 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ControlTemplate\Expander.xaml" />
+        <ResourceDictionary Source="ControlTemplate\GridSplitter.xaml" />
+        <ResourceDictionary Source="ControlTemplate\ComboBox.xaml" />
+        <ResourceDictionary Source="ControlTemplate\DataGrid.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFB0E0FF" />
+    <!--<Button Background="{DynamicResource {x:Static SystemColors.DesktopBrushKey}}" Content="Hello, World!" />-->
+    <!--<SolidColorBrush x:Key="UIColors.GridLinesBrushKey" Color="#FF00A5D7"/>-->
+
+    <!--<Style x:Key="{x:Type Control}"  TargetType="{x:Type TextBox}">
+        <Setter Property="DataContext" Value="{Binding Path=DataContext,RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Window}}}"/>
+    </Style>-->
+
+    <Style x:Key="ToolBarStyle" TargetType="{x:Type ToolBar}" BasedOn="{StaticResource {x:Type ToolBar}}">
+        <Setter Property="ToolBarTray.IsLocked" Value="False"/>
+    </Style>
+    <Style x:Key="ExpanderStyle" TargetType="{x:Type Expander}" BasedOn="{StaticResource {x:Type Expander}}">
+        <Setter Property="Margin" Value="0,0,0,10"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Foreground" Value="#FFFFFFFF"/>
+        <!--<Setter Property="Background" Value="#FFABADB3"/>-->
+        <Setter Property="Background" Value="#FF99B4D1"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="MaxWidth" Value="{Binding Path=ActualWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1, AncestorType={x:Type UIElement}}}"/>
+        <!--<Setter Property="Width" Value="{Binding Path=ActualWidth,RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1, AncestorType={x:Type UIElement}}}"/>-->
+    </Style>
+    <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
+        <Setter Property="MinHeight" Value="50"/>
+        <Setter Property="MaxHeight" Value="200"/>
+        <!--<Setter Property="RowHeight" Value="26"/>-->
+        <Setter Property="Background" Value="#FFFFFFFF"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="AlternatingRowBackground" Value="#FFF0F0F0"/>
+        <!--<Setter Property="HorizontalGridLinesBrush" Value="#FF00A5D7"/>
+        <Setter Property="VerticalGridLinesBrush" Value="#FF00A5D7"/>-->
+        <Setter Property="AutoGenerateColumns" Value="True"/>
+        <Setter Property="HeadersVisibility" Value="All"/>
+        <!--<Setter Property="ColumnWidth" Value="*"/>-->
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
+    
+    <Style x:Key="ToolBarIconButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="{Binding Path=Width,RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Margin" Value="2,1"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <!--<Setter Property="Content">
+            <Setter.Value>
+                <Rectangle Width="{Binding Path=Width,RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}}}" Height="{Binding Path=Height,RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type Button}}}">
+                    <Rectangle.Fill>
+                <ImageBrush ImageSource="Resources\plus.png" Stretch="UniformToFill" />
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Setter.Value>
+        </Setter>x:Key="ToolMenuItemStyle" BasedOn="{StaticResource {x:Type MenuItem}}"-->
+    </Style>
+    <!--<Style x:Key="{x:Type MenuItem}"  TargetType="{x:Type MenuItem}">
+        <Setter Value="0"/>
+    </Style>-->
+
+</ResourceDictionary>
