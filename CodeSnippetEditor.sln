@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSnippetEditorWpf", "Cod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSnippetEditor.Core", "CodeSnippetEditor.Core\CodeSnippetEditor.Core.csproj", "{D1AD8E3F-8BF7-4627-AEA4-A6CEEE5363A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSnippetEditor.Localization", "CodeSnippetEditor.Localization\CodeSnippetEditor.Localization.csproj", "{BF6A3685-30E3-4BE4-B90B-74622763DB2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSnippetEditor", "CodeSnippetEditor\CodeSnippetEditor.csproj", "{609A2146-0E51-4152-BD75-1B6C195E389C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,22 @@ Global
 		{D1AD8E3F-8BF7-4627-AEA4-A6CEEE5363A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1AD8E3F-8BF7-4627-AEA4-A6CEEE5363A8}.Release|x86.ActiveCfg = Release|Any CPU
 		{D1AD8E3F-8BF7-4627-AEA4-A6CEEE5363A8}.Release|x86.Build.0 = Release|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Debug|x86.Build.0 = Debug|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF6A3685-30E3-4BE4-B90B-74622763DB2A}.Release|x86.Build.0 = Release|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Debug|x86.Build.0 = Debug|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Release|x86.ActiveCfg = Release|Any CPU
+		{609A2146-0E51-4152-BD75-1B6C195E389C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
