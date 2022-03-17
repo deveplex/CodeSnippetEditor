@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{609A2146-0E51-4152-BD75-1B6C195E389C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CodeSnippetEditor</RootNamespace>
+    <AssemblyName>CodeSnippetEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Code Colorisers\Coloriser.cs" />
+    <Compile Include="Code Colorisers\ColorToken.cs" />
+    <Compile Include="Code Colorisers\CSharpCodeColoriser.cs" />
+    <Compile Include="Code Colorisers\IColorTokenProvider.cs" />
+    <Compile Include="Code Colorisers\JSharpCodeColoriser.cs" />
+    <Compile Include="Code Colorisers\LanguageKind.cs" />
+    <Compile Include="Code Colorisers\UnknownCodeColoriser.cs" />
+    <Compile Include="Code Colorisers\VBCodeColoriser.cs" />
+    <Compile Include="Code Colorisers\XMLCodeColoriser.cs" />
+    <Compile Include="ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlExtensions.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="ResourceKeyProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Snippet Object Model\Import.cs" />
+    <Compile Include="Snippet Object Model\Reference.cs" />
+    <Compile Include="Snippet Object Model\Replacement.cs" />
+    <Compile Include="Snippet Object Model\ReplacementKind.cs" />
+    <Compile Include="UI Controls\CodeEditor.cs" />
+    <Compile Include="UI Controls\ExpandablePanel.cs" />
+    <Compile Include="UI Controls\ExpandPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI Controls\SnippetEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI Controls\SnippetExplorer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI Controls\SnippetExplorer.Designer.cs">
+      <DependentUpon>SnippetExplorer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI Controls\ExpandPanel.resx">
+      <DependentUpon>ExpandPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI Controls\SnippetExplorer.resx">
+      <DependentUpon>SnippetExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Documentation\SnippetDiagram.cd" />
+    <None Include="Documentation\snippetformat.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Documentation\vscontent.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documentation\Issues.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
